@@ -1,38 +1,66 @@
+#root {
+  width: 100%;
+  height: 100%;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  padding: 50px;
+}
+.main{
+  position: relative;
+  margin-top: 100px;
+}
+.map {
+
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  /* gap: 1px; */
 }
 
-.App-link {
-  color: #61dafb;
+.cell {
+  width: 80px;
+  height: 80px;
+  border: 1px solid goldenrod;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cellWall {
+  width: 80px;
+  height: 80px;
+  background-color: dimgrey;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+}
+
+.avarta {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.avartaImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px #8bc34a solid;
+  box-sizing: border-box;
+}
+
+.player{
+  position: absolute;
+  transition: top 1s ease-in-out 500ms,left 1s ease-in-out 500ms;
 }
