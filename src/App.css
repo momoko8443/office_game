@@ -13,7 +13,7 @@
 }
 .main{
   position: relative;
-  margin-top: 100px;
+  margin-top: 50%;
 }
 .map {
 
@@ -49,6 +49,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .avartaImg {
@@ -62,5 +63,9 @@
 
 .player{
   position: absolute;
-  transition: top 1s ease-in-out 500ms,left 1s ease-in-out 500ms;
+  transition: top 1s ease-in-out 500ms,left 1s ease-in-out 500ms, transform 100ms ease-in-out;
+}
+
+.player:hover{
+  transform: translateY(-2px);
 }

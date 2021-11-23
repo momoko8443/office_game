@@ -41,7 +41,7 @@ function App() {
       man.current.style.top = 0;
       man.current.style.left = 0;
     }
-  },[man]);
+  },[man.current]);
   useEffect(()=>{
     if(woman.current){
       woman.current.style.top = 0;
@@ -49,9 +49,9 @@ function App() {
       setTimeout(()=>{
         moveLeft(woman.current);
         moveDown(man.current);
-      },5000)
+      },2000)
     }
-  },[woman])
+  },[woman.current])
 
   const move = (direction,ele, step) => {
     let current = '';
@@ -85,15 +85,31 @@ function App() {
   const moveDown = (ele) => {
     move('down', ele, 80);
   }
+
+  const clickPlayer = (playEle) => {
+    console.log(playEle);
+  }
+  const [isEditMode, setIsEditMode] = useState(false);
+  const changeModeHandler = (e) => {
+    console.log(e.target.checked);
+    setIsEditMode(e.target.checked);
+  }
   return (
     <div className="App">
-     <div className="main">
-      <div ref={woman} className="player">
-          <Avarta src={avarta1}></Avarta>
+      <div>
+        <input type="checkbox" checked={isEditMode} onChange={changeModeHandler}/>Edit Mode
+      </div>
+      <div className="main">
+        { !isEditMode &&
+        <>
+        <div ref={woman} className="player">
+          <Avarta src={avarta1} onClick={()=> clickPlayer(woman)}></Avarta>
         </div>
         <div ref={man} className="player">
-          <Avarta src={avarta2}></Avarta>
+          <Avarta src={avarta2} onClick={()=> clickPlayer(man)}></Avarta>
         </div>
+        </>
+      }
         <div className="map">
           {
               mapArr.map((cell,index)=>{
