@@ -69,3 +69,19 @@
 .player:hover{
   transform: translateY(-2px);
 }
+
+
+
+
+.block1 {
+  width: 160px;
+  height: 240px;
+}
+.block2 {
+  width: 240px;
+  height: 160px;
+}
+
+.room {
+  position: absolute;
+}

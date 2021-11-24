@@ -1,14 +1,18 @@
 
 function Cell(props) {
-  
+
   return (
-    <div className={props.wall ? 'cellWall':'cell'} onClick={()=> props.switchWall && props.switchWall(!props.wall, props.rowIndex, props.columnIndex)}>
-        <span>
+    <div className={props.wall ? 'cellWall' : 'cell'} onClick={() => props.switchWall && props.switchWall(!props.wall, props.rowIndex, props.columnIndex)}>
+      {props.showInfo &&
+        <>
+          <span>
             row: {props.rowIndex}
-        </span>
-        <span>
+          </span>
+          <span>
             col: {props.columnIndex}
-        </span>
+          </span>
+        </>
+      }
     </div>
   );
 }

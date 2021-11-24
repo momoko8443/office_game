@@ -3,15 +3,17 @@ import './App.css';
 import Avarta from './components/avarta';
 import Cell from './components/cell';
 import {Graph,astar} from 'javascript-astar';
+import block1 from './assets/block1.png';
+import block2 from './assets/block2.png';
 function App() {
   const rowCount = 12;
   const columnCount = 10;
   const step = 80;
   const defaultGrid = [
-    [1,0,0,1,1,1,1,1,1,1],
-    [1,1,1,1,1,1,1,1,1,1],
-    [1,1,1,1,1,1,1,1,1,1],
-    [1,1,1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1,0,0],
+    [1,1,1,1,1,1,1,1,0,0],
+    [0,0,0,1,1,1,1,1,0,0],
+    [0,0,0,1,1,1,1,1,1,1],
     [1,1,1,1,1,1,1,1,1,1],
     [1,1,1,1,1,1,1,1,1,1],
     [1,1,1,1,1,1,1,1,1,1],
@@ -60,12 +62,12 @@ function App() {
   },[man.current]);
   useEffect(()=>{
     if(woman.current){
-      woman.current.style.top = 0;
-      woman.current.style.left = '80px';
-      setTimeout(()=>{
-        moveLeft(woman.current);
-        moveDown(man.current);
-      },2000)
+      woman.current.style.top = '80px';
+      woman.current.style.left = 0;
+      // setTimeout(()=>{
+      //   moveLeft(woman.current);
+      //   moveDown(man.current);
+      // },2000)
     }
   },[woman.current])
 
@@ -183,6 +185,12 @@ function App() {
         <div ref={man} className="player">
           <Avarta src={avarta2} onClick={()=> clickPlayer(man)}></Avarta>
         </div>
+        <div className="room" style={{top:0,left:'640px'}}>
+          <img className="block1" src={block1}></img>
+        </div>
+        <div className="room" style={{top:160,left:0}}>
+          <img className="block2" src={block2}></img>
+        </div>
         </>
       }
         <div className="map">
@@ -194,7 +202,7 @@ function App() {
                   <Cell wall={cell === 0 ? true:false} 
                     rowIndex={rowIndex} 
                     columnIndex={columnIndex}
-                    switchWall={switchWallHandler}>
+                    switchWall={switchWallHandler} showInfo={isEditMode}>
                     
                   </Cell>
                 )
